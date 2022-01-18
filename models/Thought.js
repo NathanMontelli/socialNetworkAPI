@@ -13,14 +13,14 @@ const Thought = new Schema({
   // }
   username: {
     type: Schema.Types.ObjectId,
-    ref: 'user' 
+    ref: 'user'
   },
   reactions: [{
     type: Schema.Types.ObjectId,
     ref: 'reaction'
   }]
-}, { timestamps: true }, 
-{ toJSON: { virtuals: true, }, id: false, })
+}, { timestamps: true },
+{ toJSON: { virtuals: true }, id: false })
 
 Thought.virtual('reactionCount').get(function () {
   return this.reactions.length
