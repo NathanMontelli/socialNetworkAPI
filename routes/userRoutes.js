@@ -20,13 +20,13 @@ router.post('/users', async function (req, res) {
 })
 //PUT to update a user by id
 router.put('/users/:id', async function (req, res) {
-  const user = await User.findByIdAndUpdate(req.params.id, req.body)
+  await User.findByIdAndUpdate(req.params.id, req.body)
   res.sendStatus(200)
 })
 
 //DELETE to remove user by id
 router.delete('users/:id', async function (req, res) {
-  const user = await User.findByIdAndDelete(req.params.id)
+  await User.findByIdAndDelete(req.params.id)
   res.sendStatus(200)
 })
 //POST to add new friend to user's freinds list
