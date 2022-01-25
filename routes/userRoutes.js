@@ -37,7 +37,7 @@ router.post('/users/:userId/friends/:friendId', async function (req, res) {
 
 //DELETE to reoed a friend from user's friends list
 router.delete('/users/:userId/friends/:friendId', async function (req, res) {
-  await User.findByIdAndDelete(req.params.userId, { $pull: { friends: req.params.friendId } })
+  await User.findByIdAndUpdate(req.params.userId, { $pull: { friends: req.params.friendId } })
   res.sendStatus(200)
 })
 
