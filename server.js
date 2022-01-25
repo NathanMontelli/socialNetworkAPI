@@ -1,6 +1,6 @@
 const express = require('express')
 const { join } = require('path')
-const { User } = require('./models')
+// const { User } = require('./models')
 
 const app = express()
 

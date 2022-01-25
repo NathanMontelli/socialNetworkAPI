@@ -6,14 +6,10 @@ const Thought = new Schema({
     require: true,
     maxlength: 280
   },
-  // createdAt: {
-  //   type: Date,
-  //   default: Date.now,
-
-  // }
-  username: {
+  user: {
     type: Schema.Types.ObjectId,
-    ref: 'user'
+    ref: 'user',
+    required: true
   },
   reactions: [{
     type: Schema.Types.ObjectId,
@@ -26,4 +22,4 @@ Thought.virtual('reactionCount').get(function () {
   return this.reactions.length
 })
 
-module.exports = model('thought,', Thought)
+module.exports = model('thought', Thought)

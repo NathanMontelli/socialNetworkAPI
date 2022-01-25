@@ -25,16 +25,20 @@ router.put('/users/:id', async function (req, res) {
 })
 
 //DELETE to remove user by id
-router.delete('users/:id', async function (req, res) {
+router.delete('/users/:id', async function (req, res) {
   await User.findByIdAndDelete(req.params.id)
   res.sendStatus(200)
 })
 //POST to add new friend to user's freinds list
-router.post('users/:userId/friends/:friendId', async function (req, res) {
-
+router.post('/users/:userId/friends/:friendId', async function (req, res) {
+  await User.findByIdAndUpdate(req.params.userId, {$addToSet: { friends: req.params.friendId } })
+  res.sendStatus(200)
 })
 
 //DELETE to reoed a friend from user's friends list
-router.delete('users/:userId/friends/:friendId', async function (req, res) {
-
+router.delete('/users/:userId/friends/:friendId', async function (req, res) {
+  await User.findByIdAndDelete(req.params.userId, { $pull: { friends: req.params.friendId } })
+  res.sendStatus(200)
 })
+
+module.exports = router
